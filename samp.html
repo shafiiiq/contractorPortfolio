@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(34, 36, 37)
+        }
+
+        /* Style for the custom dropdown */
+        .custom-dropdown {
+            position: absolute;
+            background-color: rgb(68, 83, 90);
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            color: white;
+        }
+
+        /* Style for the options within the custom dropdown */
+        .custom-dropdown-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for the selected option within the custom dropdown */
+        .custom-dropdown-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .custom-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="country flex-col gap w-eqaul">
+        <label class="white font">Country</label>
+        <div class="cy-data">
+            <input type="text" id="countryInput" class="height pad radius shadow full bg-color font white holder"
+            placeholder="Search Here" list="countries">
+            <!-- Datalist for countries -->
+            <datalist id="countries"></datalist>
+            <!-- Custom dropdown menu -->
+            <div class="custom-dropdown" id="customDropdown"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get the input element
+        const countryInput = document.getElementById('countryInput');
+        // Get the custom dropdown menu
+        const customDropdown = document.getElementById('customDropdown');
+        // Get the datalist element
+        const datalistCountries = document.getElementById('countries');
+
+        // Function to populate the custom dropdown menu
+        function populateDropdown(countries) {
+            customDropdown.innerHTML = '';
+            countries.forEach(country => {
+                const option = document.createElement('div');
+                option.classList.add('custom-dropdown-item');
+                option.textContent = country.name;
+                option.addEventListener('click', () => {
+                    countryInput.value = country.name;
+                    customDropdown.style.display = 'none';
+                });
+                customDropdown.appendChild(option);
+            });
+            customDropdown.style.display = countries.length ? 'block' : 'none';
+        }
+
+        // Function to populate the datalist
+        function populateDatalist(countries) {
+            datalistCountries.innerHTML = '';
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.name;
+                datalistCountries.appendChild(option);
+            });
+        }
+
+        // Event listener for input change
+        countryInput.addEventListener('input', function () {
+            const searchText = this.value.toLowerCase();
+            const filteredCountries = countries.filter(country => country.name.toLowerCase().includes(searchText));
+            populateDropdown(filteredCountries);
+        });
+
+        // Fetch countries data from JSON file
+        fetch('json/countries.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch countries');
+                }
+                return response.json();
+            })
+            .then(data => {
+                countries = data.map(country => ({
+                    id: country.id,
+                    name: country.name
+                }));
+                populateDropdown(countries);
+                populateDatalist(countries);
+            })
+            .catch(error => console.error('Error fetching countries:', error));
+    </script>
+</body>
+
+</html>
+

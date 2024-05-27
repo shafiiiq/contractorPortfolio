@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <div class="container">
+            <div class="wrapper">
+                <div class="left">
+
+                </div>
+                <div class="right-cover">
+                    <div class="right">
+                        <div class="video">
+                            <div class="file-input-container files" style="display: flex; gap: 0.5rem;">
+                                <input type="file" id="fileInput" class="hidden" onchange="displayFileName()">
+                                <label style="background-color: rgb(233, 75, 75);color: white; border-radius: 6px; width: 15rem; height: 3.3rem; display: flex;
+                                justify-content: center; align-items: center;" for="fileInput" class="file-input-label">
+                                    Add video
+                                </label>
+                                <span style="margin-top: 0.8rem;" id="fileName"></span>
+                            </div>
+                            <div class="add-more-video pointer">
+                                <span class="material-icons-round">
+                                    add
+                                </span>
+                                <p>
+                                    Add more
+                                </p>
+                            </div>
+                        </div>
+                        <div class="works mt-2">
+                            <div class="add-more-video add-works pointer" id="add-work">
+                                <span class="material-icons-round">
+                                    add
+                                </span>
+                                <p>
+                                    Add Works
+                                </p>
+                            </div>
+                            <div class="hover-me">
+                                <input type="text" placeholder="Project Name" disabled class="project-name">
+                            </div>
+                        </div>
+                        <div class="works-expand mt-2">
+                            <div class="status">
+                                <div class="item need">
+                                    <label for="">Start date</label>
+                                    <input type="date" class="pointer start-date" name="startDate1">
+                                </div>
+                                <div class="check item pointer" id="check">
+                                    <label for="">Finished</label>
+                                    <span class="material-icons-round">
+                                        done
+                                    </span>
+                                </div>
+                                <div class="item need">
+                                    <label for="">End date</label>
+                                    <input type="date" disabled class="end-date pointer" name="EndDate1">
+                                </div>
+                            </div>
+                            <div class="budgets full">
+                                <div class="category flex-col gap w-eqaul">
+                                    <label for="" class="font white">Category</label>
+                                    <select name="" class="height pad radius shadow full bg-color white category"
+                                        name="category1">
+                                        <option value="house">House</option>
+                                    </select>
+                                </div>
+                                <div class="flex-col gap full">
+                                    <label for="" class="font white">Type</label>
+                                    <select name="" class="height pad radius shadow full bg-color white type" name="type1">
+                                        <option value="Traditional">Traditional</option>
+                                        <option value="Modern">Modern</option>
+                                        <option value="Contemporary">Contemporary</option>
+                                        <option value="Minimalist">Minimalist</option>
+                                    </select>
+                                </div>
+                                <input type="text" placeholder="Budget"
+                                    class="height full radius pad font bg-color shadow mt-auto white budget" name="budget1">
+                            </div>
+                            <div>
+                                <textarea name="" cols="30" rows="10"
+                                    class="font area-height radius bg-color shadow full description"
+                                    placeholder="Description" name="description1"></textarea>
+                            </div>
+                            <button class="full white radius pointer shadow height flex-between pad-inline font bg-more-1"
+                                id="addMore">
+                                Add more
+                                <span class="material-icons-round">
+                                    add
+                                </span>
+                            </button>
+                        </div>
+                        <div class="author">
+                            <h3 class="white mb-1">Personal details</h3>
+                            <div class="one flex">
+                                <input type="text" class="height pad radius shadow w-2 bg-color font white holder"
+                                    placeholder="Buisness Name">
+                                <input type="text" class="height pad radius shadow w-3 bg-color font white holder"
+                                    placeholder="Experience">
+                                <input type="text" class="height pad radius shadow w-1 bg-color font white holder"
+                                    placeholder="Worth">
+                            </div>
+                            <div class="two flex mt-2">
+                                <input type="text" class="height pad radius shadow w-3 bg-color font white holder"
+                                    placeholder="Total Projects">
+                                <input type="text" class="height pad radius shadow w-2 bg-color font white holder"
+                                    placeholder="Finished">
+                                <input type="text" class="height pad radius shadow w-1 bg-color font white holder"
+                                    placeholder="Ongoing">
+                            </div>
+                            <div class="two flex mt-2">
+                                <input type="text" class="height pad radius shadow w-1 bg-color font white holder"
+                                    placeholder="Education">
+                                <input type="text" class="height pad radius shadow w-3 bg-color font white holder"
+                                    placeholder="Licence Number">
+                                <input type="text" name="language1"
+                                    class="height pad radius shadow w-2 bg-color font white holder language"
+                                    placeholder="Language 1">
+    
+                            </div>
+                            <div class="full mt-2">
+                                <button id="addButton"
+                                    class="height radius pointer shadow flex-between pad-inline full bg-color font white holder bg-more">
+                                    Add more language
+                                    <span class="material-icons-round">add</span>
+                                </button>
+                            </div>
+                            <div class="three flex-col mt-2">
+                                <label for="" class="mb-1 white font-head">Address</label>
+                                <div class="three flex">
+                                    <div class="country flex-col gap w-eqaul">
+                                        <label class="white font">Country</label>
+                                        <div class="cy-data">
+                                            <input type="text" id="countryInput"
+                                                class="height pad radius shadow full bg-color font white holder shadow"
+                                                placeholder="Search...">
+                                            <!-- Custom dropdown menu -->
+                                            <div class="custom-dropdown" id="customDropdown" style="display: none;"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="state flex-col gap w-eqaul">
+                                        <label class="white font">State</label>
+                                        <div class="st-data">
+                                            <input type="text" id="stateInput"
+                                                class="height pad radius shadow full bg-color font white holder shadow"
+                                                placeholder="Search...">
+                                            <!-- Custom dropdown menu -->
+                                            <div class="custom-dropdown" id="customStateDropdown" style="display: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="city flex-col gap w-eqaul">
+                                        <label class="white font">City</label>
+                                        <div class="ct-data">
+                                            <input type="text" id="cityInput"
+                                                class="height pad radius shadow full bg-color font white holder shadow"
+                                                placeholder="Search...">
+                                            <!-- Custom dropdown menu -->
+                                            <div class="custom-dropdown" id="customCityDropdown" style="display: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="address full">
+                                <textarea name="" id="" cols="30" rows="10"
+                                    class="full mt-2 textarea area-height radius holder bg-color shadow white"
+                                    placeholder="Address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" placeholder="Add" class="submit">
+    </form>
+
+    <script>
+        document.getElementById('add-work').addEventListener('click', function () {
+            var projectNameInput = document.querySelector('.project-name');
+            projectNameInput.disabled = !projectNameInput.disabled;
+            var worksExpand = document.querySelector('.works-expand');
+            worksExpand.classList.toggle('expanded');
+            var author = document.querySelector('.author');
+            if (author.style.margin === '') {
+                author.style.margin = '2rem 0 0 0'; // Set margin if it's not set
+            } else {
+                author.style.margin = ''; // Toggle back to default (remove margin)
+            }
+        });
+
+        document.getElementById('check').addEventListener('click', function () {
+            var projectNameInput = document.querySelector('.end-date');
+            projectNameInput.disabled = !projectNameInput.disabled;
+            var checkElement = document.getElementById('check');
+
+            if (checkElement.style.backgroundColor === 'rgb(80, 94, 94)') {
+                checkElement.style.backgroundColor = ''; // Toggle off the background color
+            } else {
+                checkElement.style.backgroundColor = 'rgb(80, 94, 94)'; // Toggle on the background color
+            }
+        });
+
+        // add more languages 
+        let suffix = 2;
+
+        function removeOldLanguageInput() {
+            const inputs = document.querySelectorAll('.language');
+            const length = inputs.length;
+
+            for (let i = length - 1; i >= 1; i--) {
+                const input = inputs[i];
+                if (input.classList.contains('old')) {
+                    setTimeout(function () {
+                        input.style.display = 'none';
+                    }, 300);
+                    break; // Exit the loop after hiding the last input
+                }
+            }
+        }
+
+
+
+        function addNewLanguageInput() {
+            const languageInputs = document.querySelectorAll('.language');
+            const newLanguageInput = languageInputs[0].cloneNode(true);
+            newLanguageInput.value = '';
+            newLanguageInput.setAttribute('name', `language${suffix}`);
+            newLanguageInput.setAttribute('placeholder', `Language ${suffix}`);
+            newLanguageInput.classList.remove('old');
+
+            // Add 'old' class to existing inputs except the last one
+            for (let i = 0; i < languageInputs.length; i++) {
+                languageInputs[i].classList.add('old');
+            }
+
+            languageInputs[0].parentNode.insertBefore(newLanguageInput, null);
+            removeOldLanguageInput();
+            suffix++;
+        }
+
+        document.getElementById('addButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            addNewLanguageInput();
+            // console.log(`Generated name for new input: language${suffix}`);
+        });
+
+
+        // add more language ends 
+
+
+        // add more works starts
+        let startDateSuffix = 1;
+        let endDateSuffix = 1;
+        let categorySuffix = 1;
+        let typeSuffix = 1;
+        let budgetSuffix = 1;
+        let descriptionSuffix = 1;
+
+        document.getElementById('addMore').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Increment suffix for each input type
+            const startDateInput = document.querySelector('.start-date');
+            if (startDateInput) {
+                const newName = `startDate${startDateSuffix}`;
+                startDateInput.setAttribute('name', newName);
+                startDateSuffix++;
+                console.log(newName);
+            }
+
+            const endDateInput = document.querySelector('.end-date');
+            if (endDateInput) {
+                const newName = `endDate${endDateSuffix}`;
+                endDateInput.setAttribute('name', newName);
+                endDateSuffix++;
+                console.log(newName);
+            }
+
+            const categoryInput = document.querySelector('.category');
+            if (categoryInput) {
+                const newName = `category${categorySuffix}`;
+                categoryInput.setAttribute('name', newName);
+                categorySuffix++;
+                console.log(newName);
+            }
+
+            const typeInput = document.querySelector('.type');
+            if (typeInput) {
+                const newName = `type${typeSuffix}`;
+                typeInput.setAttribute('name', newName);
+                typeSuffix++;
+                console.log(newName);
+            }
+
+            const budgetInput = document.querySelector('.budget');
+            if (budgetInput) {
+                const newName = `budget${budgetSuffix}`;
+                budgetInput.setAttribute('name', newName);
+                budgetSuffix++;
+                console.log(newName);
+            }
+
+            const descriptionInput = document.querySelector('.description');
+            if (descriptionInput) {
+                const newName = `description${descriptionSuffix}`;
+                descriptionInput.setAttribute('name', newName);
+                descriptionSuffix++;
+                console.log(newName);
+            }
+        });
+
+
+    </script>
+    <script src="fetch.js"></script>
+</body>
+
+</html>
